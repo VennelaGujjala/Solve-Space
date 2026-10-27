@@ -1,0 +1,6 @@
+{
+  "name": "SolveSpace",
+  "description": "SolveSpace: An adaptive multi-model interactive console that builds modular workspaces for personal goals and dynamically adapts layout, warnings, and suggestions as progress changes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
