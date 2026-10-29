@@ -15,15 +15,15 @@ export const RuleInspectorModal: React.FC<RuleInspectorModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center p-4 no-print"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 no-print"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-6 space-y-5"
+        className="w-full max-w-lg bg-white/95 dark:bg-[#080C1C]/95 backdrop-blur-2xl border border-slate-200 dark:border-sky-400/30 rounded-xl shadow-2xl p-6 space-y-5"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
+          <div className="flex items-center gap-2 text-sky-600 dark:text-sky-300">
             <HelpCircle className="w-5 h-5 shrink-0" />
             <span className="text-xs font-semibold">Explainable Adaptive Engine</span>
           </div>
@@ -39,7 +39,7 @@ export const RuleInspectorModal: React.FC<RuleInspectorModalProps> = ({
 
         <div>
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">{rule.title}</h2>
-          <p className="mt-1.5 text-xs font-mono-num text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg p-3">
+          <p className="mt-1.5 text-xs font-mono-num text-slate-600 dark:text-sky-200 bg-slate-50 dark:bg-[#040711] border border-slate-200 dark:border-white/[0.10] rounded-lg p-3">
             Rule: {rule.triggerRule}
           </p>
         </div>
@@ -48,7 +48,7 @@ export const RuleInspectorModal: React.FC<RuleInspectorModalProps> = ({
           <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
             Observed Workspace Data That Triggered This State
           </h3>
-          <div className="divide-y divide-slate-100 dark:divide-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg">
+          <div className="divide-y divide-slate-200/60 dark:divide-white/[0.07] border border-slate-200 dark:border-white/[0.10] rounded-lg">
             {rule.observedMetrics.map((m) => (
               <div
                 key={m.label}
@@ -56,7 +56,7 @@ export const RuleInspectorModal: React.FC<RuleInspectorModalProps> = ({
               >
                 <span className="font-medium text-slate-700 dark:text-slate-200">{m.label}</span>
                 <div className="font-mono-num text-right">
-                  <span className="font-semibold text-slate-900 dark:text-white">{m.value}</span>
+                  <span className="font-semibold text-slate-900 dark:text-sky-200">{m.value}</span>
                   <span className="text-slate-400"> · {m.threshold}</span>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export const RuleInspectorModal: React.FC<RuleInspectorModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity cursor-pointer"
+            className="px-4 py-2 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors cursor-pointer"
           >
             Got it
           </button>

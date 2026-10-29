@@ -60,15 +60,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-xs flex items-start justify-center pt-20 p-4 no-print"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-start justify-center pt-20 p-4 no-print"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden"
+        className="w-full max-w-lg bg-white/95 dark:bg-[#080C1C]/95 backdrop-blur-2xl border border-slate-200 dark:border-sky-400/30 rounded-xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-800 flex items-center gap-3">
-          <Search className="w-4 h-4 text-slate-400 shrink-0" />
+        <div className="px-4 py-3 border-b border-slate-200/70 dark:border-white/[0.08] flex items-center gap-3">
+          <Search className="w-4 h-4 text-sky-400 shrink-0" />
           <input
             type="text"
             autoFocus
@@ -86,7 +86,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </button>
         </div>
 
-        <ul className="max-h-72 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
+        <ul className="max-h-72 overflow-y-auto divide-y divide-slate-200/60 dark:divide-white/[0.07]">
           {hits.length === 0 ? (
             <li className="p-6 text-center text-xs text-slate-500">
               No matching workspaces, tasks, or notes for “{query}”.
@@ -100,7 +100,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     onJumpToWorkspace(hit.wsId);
                     onClose();
                   }}
-                  className="w-full px-4 py-3 text-left hover:bg-slate-50 dark:hover:bg-slate-800/70 flex items-center justify-between gap-3 cursor-pointer"
+                  className="w-full px-4 py-3 text-left hover:bg-slate-100 dark:hover:bg-white/[0.06] flex items-center justify-between gap-3 cursor-pointer"
                 >
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-slate-900 dark:text-white truncate">
@@ -110,7 +110,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       {hit.kind} · {hit.wsName}
                     </p>
                   </div>
-                  <span className="text-xs text-blue-600 dark:text-blue-400 shrink-0">Open →</span>
+                  <span className="text-xs text-sky-600 dark:text-sky-400 shrink-0">Open →</span>
                 </button>
               </li>
             ))
@@ -156,13 +156,13 @@ export const QuickNewTaskModal: React.FC<QuickNewTaskModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-xs flex items-center justify-center p-4 no-print"
+      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 no-print"
       onClick={onClose}
     >
       <form
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-5 space-y-4"
+        className="w-full max-w-md bg-white/95 dark:bg-[#080C1C]/95 backdrop-blur-2xl border border-slate-200 dark:border-sky-400/30 rounded-xl shadow-2xl p-5 space-y-4"
       >
         <div className="flex items-center justify-between">
           <div>
@@ -193,26 +193,26 @@ export const QuickNewTaskModal: React.FC<QuickNewTaskModalProps> = ({
             placeholder="What needs to get done?"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+            className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
           />
         </div>
 
         <div className="grid grid-cols-3 gap-2">
           <div>
-            <label className="block text-xs text-slate-500 mb-1">Due Date</label>
+            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">Due Date</label>
             <input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full px-2 py-1.5 text-xs font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-2 py-1.5 text-xs font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
             />
           </div>
           <div>
-            <label className="block text-xs text-slate-500 mb-1">Priority</label>
+            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">Priority</label>
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
-              className="w-full px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-2 py-1.5 text-xs rounded-lg astra-input text-slate-900 dark:text-white"
             >
               <option value="high">High</option>
               <option value="medium">Medium</option>
@@ -220,11 +220,11 @@ export const QuickNewTaskModal: React.FC<QuickNewTaskModalProps> = ({
             </select>
           </div>
           <div>
-            <label className="block text-xs text-slate-500 mb-1">Effort</label>
+            <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1">Effort</label>
             <select
               value={effort}
               onChange={(e) => setEffort(e.target.value as 'light' | 'standard' | 'deep')}
-              className="w-full px-2 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-2 py-1.5 text-xs rounded-lg astra-input text-slate-900 dark:text-white"
             >
               <option value="light">Light</option>
               <option value="standard">Standard</option>
@@ -243,7 +243,7 @@ export const QuickNewTaskModal: React.FC<QuickNewTaskModalProps> = ({
           </button>
           <button
             type="submit"
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Add Task</span>

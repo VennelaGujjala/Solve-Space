@@ -51,17 +51,17 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
       onExplain={onExplain}
       minimizedSummary={`${completedTodayCount}/${habits.length} habits checked today · ${bestStreak}-day peak streak`}
     >
-      <form onSubmit={handleAdd} className="flex items-center gap-2 pb-3 border-b border-slate-100 dark:border-slate-800">
+      <form onSubmit={handleAdd} className="flex items-center gap-2 pb-3 border-b border-slate-200/60 dark:border-white/[0.08]">
         <input
           type="text"
           placeholder="Add daily habit…"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder:text-slate-400"
+          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-lg astra-input text-slate-900 dark:text-white placeholder:text-slate-400"
         />
         <button
           type="submit"
-          className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap shrink-0 cursor-pointer"
+          className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add</span>
@@ -73,7 +73,7 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
           Add 1–3 repeatable daily habits above to build streak consistency.
         </div>
       ) : (
-        <ul className="divide-y divide-slate-100 dark:divide-slate-800/80 mt-1">
+        <ul className="divide-y divide-slate-200/60 dark:divide-white/[0.06] mt-1">
           {habits.map((habit) => {
             const doneToday = habit.completedDates.includes(today);
             return (
@@ -85,8 +85,8 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
                     onClick={() => onToggleHabitToday(habit.id)}
                     className={`w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors cursor-pointer ${
                       doneToday
-                        ? 'bg-emerald-600 border-emerald-600 text-white'
-                        : 'border-slate-300 dark:border-slate-600 hover:border-emerald-500'
+                        ? 'bg-emerald-500 border-emerald-500 text-slate-950'
+                        : 'border-slate-300 dark:border-white/[0.22] hover:border-emerald-400'
                     }`}
                   >
                     {doneToday && <Check className="w-3.5 h-3.5" />}
@@ -96,7 +96,7 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
                       {habit.title}
                     </p>
                     <div className="mt-1 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 tabular-nums">
-                      <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-medium">
+                      <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-300 font-medium">
                         <Flame className="w-3.5 h-3.5" />
                         {habit.streak}d streak
                       </span>
@@ -109,8 +109,8 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
                               key={day}
                               className={`w-2.5 h-2.5 rounded-xs ${
                                 hit
-                                  ? 'bg-emerald-500'
-                                  : 'bg-slate-200 dark:bg-slate-700'
+                                  ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.5)]'
+                                  : 'bg-slate-200 dark:bg-white/[0.10]'
                               }`}
                             />
                           );
@@ -124,7 +124,7 @@ export const HabitTrackerModule: React.FC<HabitTrackerModuleProps> = ({
                   type="button"
                   aria-label={`Delete habit "${habit.title}"`}
                   onClick={() => onDeleteHabit(habit.id)}
-                  className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors shrink-0 cursor-pointer"
+                  className="p-1 text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 transition-colors shrink-0 cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

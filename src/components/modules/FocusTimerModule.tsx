@@ -86,7 +86,7 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
       minimizedSummary={`${sessions.length} Pomodoro sessions (${totalFocusMins}m total)`}
     >
       <div className="flex flex-col justify-between gap-4 flex-1">
-        <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg self-start">
+        <div className="flex items-center gap-1 p-1 bg-slate-200/70 dark:bg-white/[0.06] border border-transparent dark:border-white/[0.08] rounded-lg self-start">
           {(Object.keys(PRESETS) as ('focus' | 'shortBreak' | 'longBreak')[]).map((k) => (
             <button
               key={k}
@@ -94,7 +94,7 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
               onClick={() => selectPreset(k)}
               className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 presetKey === k
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                  ? 'bg-white dark:bg-sky-500/20 text-slate-900 dark:text-sky-200 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -133,7 +133,7 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
                 setRunning(false);
                 setSecondsLeft(PRESETS[presetKey].seconds);
               }}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-2 rounded-lg border border-slate-200 dark:border-white/[0.12] text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
             >
               <RotateCcw className="w-4 h-4" />
             </button>
@@ -146,7 +146,7 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
             placeholder="Session focus intent (e.g., Mock Paper Q1–Q4)…"
             value={sessionLabel}
             onChange={(e) => setSessionLabel(e.target.value)}
-            className="flex-1 min-w-0 px-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder:text-slate-400"
+            className="flex-1 min-w-0 px-3 py-1.5 text-xs rounded-lg astra-input text-slate-900 dark:text-white placeholder:text-slate-400"
           />
           <button
             type="button"
@@ -160,7 +160,7 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
               });
               setSessionLabel('');
             }}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/[0.14] rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.07] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Complete Now</span>
@@ -168,18 +168,18 @@ export const FocusTimerModule: React.FC<FocusTimerModuleProps> = ({
         </div>
 
         {sessions.length > 0 && (
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
+          <div className="pt-3 border-t border-slate-200/60 dark:border-white/[0.08]">
             <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">
               Recent sessions
             </p>
-            <ul className="divide-y divide-slate-100 dark:divide-slate-800/70 max-h-28 overflow-y-auto">
+            <ul className="divide-y divide-slate-200/60 dark:divide-white/[0.06] max-h-28 overflow-y-auto">
               {[...sessions]
                 .reverse()
                 .slice(0, 4)
                 .map((s) => (
                   <li key={s.id} className="py-1.5 flex items-center justify-between gap-2 text-xs">
                     <span className="truncate text-slate-700 dark:text-slate-300">{s.label}</span>
-                    <span className="font-mono-num text-slate-500 dark:text-slate-400 shrink-0">
+                    <span className="font-mono-num text-slate-500 dark:text-sky-300/80 shrink-0">
                       {s.durationMinutes}m · {s.date.slice(5)}
                     </span>
                   </li>

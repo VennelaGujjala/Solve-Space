@@ -170,6 +170,7 @@ export interface AppSettings {
   darkMode: boolean;
   largeText: boolean;
   keyboardShortcuts: boolean;
+  starfieldMotion: boolean;
 }
 
 export interface AchievementBadge {

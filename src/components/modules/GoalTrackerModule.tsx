@@ -69,12 +69,12 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
                 / {workspace.targetValue} {workspace.unit}
               </span>
             </div>
-            <div className="text-right font-mono-num text-sm font-medium text-slate-700 dark:text-slate-300">
+            <div className="text-right font-mono-num text-sm font-medium text-slate-700 dark:text-sky-200">
               {pct}% complete
             </div>
           </div>
 
-          <div className="mt-3 h-2.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="mt-3 h-2.5 w-full bg-slate-200/70 dark:bg-white/[0.08] rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-300 ${theme.barFill}`}
               style={{ width: `${pct}%` }}
@@ -97,7 +97,7 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
                 setDraftTarget(String(workspace.targetValue));
                 setEditingTarget((v) => !v);
               }}
-              className="text-blue-600 dark:text-blue-400 hover:underline font-medium whitespace-nowrap cursor-pointer"
+              className="text-sky-600 dark:text-sky-400 hover:underline font-medium whitespace-nowrap cursor-pointer"
             >
               {editingTarget ? 'Cancel target edit' : 'Adjust target'}
             </button>
@@ -105,7 +105,7 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
         </div>
 
         {editingTarget && (
-          <form onSubmit={handleSaveTarget} className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <form onSubmit={handleSaveTarget} className="flex items-center gap-2 pt-2 border-t border-slate-200/60 dark:border-white/[0.08]">
             <label className="text-xs text-slate-600 dark:text-slate-300 whitespace-nowrap">
               New Target ({workspace.unit}):
             </label>
@@ -115,18 +115,18 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
               step="any"
               value={draftTarget}
               onChange={(e) => setDraftTarget(e.target.value)}
-              className="w-24 px-2.5 py-1.5 text-sm font-mono-num rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-24 px-2.5 py-1.5 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
             />
             <button
               type="submit"
-              className="px-3 py-1.5 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap shrink-0 cursor-pointer"
+              className="px-3 py-1.5 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               Save
             </button>
           </form>
         )}
 
-        <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div className="pt-3 border-t border-slate-200/60 dark:border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -134,7 +134,7 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
               onClick={() =>
                 onUpdateGoalProgress(Math.max(0, +(workspace.currentValue - stepAmount).toFixed(1)))
               }
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-2 rounded-lg border border-slate-200 dark:border-white/[0.12] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
             >
               <Minus className="w-4 h-4" />
             </button>
@@ -145,7 +145,7 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
               aria-label="Increment step value"
               value={customStep}
               onChange={(e) => setCustomStep(e.target.value)}
-              className="w-16 text-center px-2 py-1.5 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-16 text-center px-2 py-1.5 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
             />
             <button
               type="button"
@@ -168,7 +168,7 @@ export const GoalTrackerModule: React.FC<GoalTrackerModuleProps> = ({
                   Math.round(workspace.targetValue * 1.15)
                 )
               }
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-950/50 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-300 border border-emerald-400/50 dark:border-emerald-400/40 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <TrendingUp className="w-3.5 h-3.5" />
               <span>Raise Target +15%</span>

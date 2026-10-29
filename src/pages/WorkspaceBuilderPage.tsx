@@ -83,7 +83,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
           <button
             type="button"
             onClick={() => onNavigate(PageId.Dashboard)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline mb-2 cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-sky-600 dark:text-sky-400 hover:underline mb-2 cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Workspace Console</span>
@@ -91,7 +91,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
             Workspace Builder — {workspace.name}
           </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-0.5">
             Drag and drop to reorder modules, rename widget headers, toggle card width, or mount new
             tools.
           </p>
@@ -103,7 +103,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
               <button
                 type="button"
                 onClick={() => setConfirmDelete(true)}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-rose-600 dark:text-rose-300 border border-rose-300/60 dark:border-rose-500/40 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-500/15 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
               >
                 <Trash2 className="w-3.5 h-3.5" />
                 <span>Delete Workspace</span>
@@ -113,7 +113,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                 <button
                   type="button"
                   onClick={onDeleteWorkspace}
-                  className="px-3 py-1.5 text-xs font-medium bg-rose-600 text-white rounded-lg hover:bg-rose-700 cursor-pointer"
+                  className="px-3 py-1.5 text-xs font-medium bg-rose-600 text-white rounded-lg hover:bg-rose-500 cursor-pointer"
                 >
                   Confirm Delete
                 </button>
@@ -131,7 +131,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
       </div>
 
       {/* Workspace Goal & Deadline Settings */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+      <div className="astra-card rounded-xl p-5">
         <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">
           01. Workspace Goal Parameters
         </h2>
@@ -144,7 +144,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
               type="text"
               value={workspace.name}
               onChange={(e) => onUpdateWorkspaceMeta({ name: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
             />
           </div>
           <div>
@@ -159,7 +159,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
               onChange={(e) =>
                 onUpdateWorkspaceMeta({ targetValue: Math.max(1, Number(e.target.value) || 1) })
               }
-              className="w-full px-3 py-2 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-3 py-2 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
             />
           </div>
           <div>
@@ -170,7 +170,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
               type="text"
               value={workspace.unit}
               onChange={(e) => onUpdateWorkspaceMeta({ unit: e.target.value })}
-              className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
             />
           </div>
           <div>
@@ -181,14 +181,14 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
               type="date"
               value={workspace.deadline}
               onChange={(e) => onUpdateWorkspaceMeta({ deadline: e.target.value })}
-              className="w-full px-3 py-2 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+              className="w-full px-3 py-2 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
             />
           </div>
         </div>
       </div>
 
       {/* Active Modules Drag-and-Drop List */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+      <div className="astra-card rounded-xl p-5">
         <div className="flex items-baseline justify-between gap-4 mb-4">
           <div>
             <h2 className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -205,7 +205,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
             No active modules. Add modules from the catalog below.
           </p>
         ) : (
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+          <ul className="divide-y divide-slate-200/60 dark:divide-white/[0.07]">
             {workspace.modules.map((mod, idx) => {
               const catMeta = MODULE_CATALOG.find((c) => c.type === mod.type);
               return (
@@ -231,7 +231,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                     >
                       <GripVertical className="w-4 h-4" />
                     </span>
-                    <span className="font-mono-num text-xs text-slate-400 w-5 shrink-0">
+                    <span className="font-mono-num text-xs text-sky-400 w-5 shrink-0">
                       0{idx + 1}
                     </span>
                     <input
@@ -239,7 +239,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                       aria-label="Module custom title"
                       value={mod.title}
                       onChange={(e) => handleRenameModule(mod.id, e.target.value)}
-                      className="flex-1 min-w-0 max-w-xs px-2.5 py-1.5 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                      className="flex-1 min-w-0 max-w-xs px-2.5 py-1.5 text-sm font-medium rounded-lg astra-input text-slate-900 dark:text-white"
                     />
                     <span className="text-xs text-slate-400 hidden md:inline truncate">
                       {catMeta?.defaultTitle}
@@ -250,7 +250,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                     <button
                       type="button"
                       onClick={() => handleToggleSpan(mod.id)}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-white/[0.14] rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                     >
                       {mod.span === 'wide' ? (
                         <>
@@ -270,7 +270,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                       aria-label="Move module up"
                       disabled={idx === 0}
                       onClick={() => moveItem(idx, idx - 1)}
-                      className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-30 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
+                      className="p-1.5 rounded-lg border border-slate-200 dark:border-white/[0.14] text-slate-600 dark:text-slate-300 disabled:opacity-30 hover:bg-slate-100 dark:hover:bg-white/[0.06] cursor-pointer"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
                     </button>
@@ -279,7 +279,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                       aria-label="Move module down"
                       disabled={idx === workspace.modules.length - 1}
                       onClick={() => moveItem(idx, idx + 1)}
-                      className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 disabled:opacity-30 hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer"
+                      className="p-1.5 rounded-lg border border-slate-200 dark:border-white/[0.14] text-slate-600 dark:text-slate-300 disabled:opacity-30 hover:bg-slate-100 dark:hover:bg-white/[0.06] cursor-pointer"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
                     </button>
@@ -287,7 +287,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                       type="button"
                       aria-label="Remove module from workspace"
                       onClick={() => handleRemoveModule(mod.id)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 transition-colors cursor-pointer"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -300,7 +300,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
       </div>
 
       {/* Available Modules Catalog */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5">
+      <div className="astra-card rounded-xl p-5">
         <h2 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">
           03. Reusable Module Library
         </h2>
@@ -315,7 +315,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
             return (
               <div
                 key={meta.type}
-                className="p-3.5 rounded-lg border border-slate-200 dark:border-slate-800 flex flex-col justify-between gap-3"
+                className="p-3.5 rounded-lg border border-slate-200/70 dark:border-white/[0.10] flex flex-col justify-between gap-3"
               >
                 <div>
                   <p className="text-xs font-semibold text-slate-900 dark:text-white">
@@ -328,7 +328,7 @@ export const WorkspaceBuilderPage: React.FC<WorkspaceBuilderPageProps> = ({
                 <button
                   type="button"
                   onClick={() => handleAddModule(meta.type)}
-                  className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1 px-3 py-1.5 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors whitespace-nowrap cursor-pointer"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>{alreadyMounted ? 'Add Another' : 'Add Module'}</span>

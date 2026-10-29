@@ -79,7 +79,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
             <label htmlFor="mood-slider" className="font-medium text-slate-700 dark:text-slate-300">
               Mood today
             </label>
-            <span className="font-mono-num font-semibold text-slate-900 dark:text-white">
+            <span className="font-mono-num font-semibold text-slate-900 dark:text-sky-200">
               {SCALE_LABELS[moodVal]}
             </span>
           </div>
@@ -91,7 +91,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
             step={1}
             value={moodVal}
             onChange={(e) => setMoodVal(Number(e.target.value))}
-            className="w-full accent-blue-600 cursor-pointer"
+            className="w-full accent-sky-400 cursor-pointer"
           />
         </div>
 
@@ -100,7 +100,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
             <label htmlFor="energy-slider" className="font-medium text-slate-700 dark:text-slate-300">
               Cognitive / Physical Energy
             </label>
-            <span className="font-mono-num font-semibold text-slate-900 dark:text-white">
+            <span className="font-mono-num font-semibold text-slate-900 dark:text-sky-200">
               {SCALE_LABELS[energyVal]}
             </span>
           </div>
@@ -112,7 +112,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
             step={1}
             value={energyVal}
             onChange={(e) => setEnergyVal(Number(e.target.value))}
-            className="w-full accent-blue-600 cursor-pointer"
+            className="w-full accent-sky-400 cursor-pointer"
           />
         </div>
 
@@ -122,7 +122,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
             placeholder="Quick context (e.g., Slept 8h, feeling clear)…"
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            className="flex-1 min-w-0 px-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder:text-slate-400"
+            className="flex-1 min-w-0 px-3 py-1.5 text-xs rounded-lg astra-input text-slate-900 dark:text-white placeholder:text-slate-400"
           />
           <button
             type="submit"
@@ -141,11 +141,11 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
       </form>
 
       {recent.length > 0 && (
-        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800">
+        <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/[0.08]">
           <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">
             Recent check-in log
           </p>
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800/70">
+          <ul className="divide-y divide-slate-200/60 dark:divide-white/[0.06]">
             {recent.map((m) => (
               <li key={m.id} className="py-1.5 flex items-center justify-between gap-2 text-xs">
                 <span className="truncate text-slate-600 dark:text-slate-300">
@@ -153,7 +153,7 @@ export const MoodCheckinModule: React.FC<MoodCheckinModuleProps> = ({
                   <span aria-hidden="true"> · </span>
                   <span>{m.note}</span>
                 </span>
-                <span className="font-mono-num text-slate-800 dark:text-slate-200 shrink-0">
+                <span className="font-mono-num text-slate-800 dark:text-sky-200 shrink-0">
                   M:{m.mood} · E:{m.energy}
                 </span>
               </li>

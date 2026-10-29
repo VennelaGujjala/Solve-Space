@@ -39,7 +39,6 @@ export const ProgressChartModule: React.FC<ProgressChartModuleProps> = ({
   const totalDays = Math.max(4, daysBetween(workspace.startDate, workspace.deadline));
   const elapsedDays = Math.max(1, daysBetween(workspace.startDate, today));
 
-  // Build 7 milestone checkpoints from startDate through deadline
   const checkpoints = 6;
   const series = Array.from({ length: checkpoints + 1 }, (_, i) => {
     const ratio = i / checkpoints;
@@ -47,7 +46,6 @@ export const ProgressChartModule: React.FC<ProgressChartModuleProps> = ({
     const pointDate = offsetDate(dayIndex - elapsedDays);
     const idealValue = +(workspace.targetValue * ratio).toFixed(1);
 
-    // Plot actual curve up to today; leave future actuals null so user clearly sees Today vs Deadline
     const isPastOrToday = pointDate <= today;
     const actualProgressAtPoint = isPastOrToday
       ? +(
@@ -81,13 +79,15 @@ export const ProgressChartModule: React.FC<ProgressChartModuleProps> = ({
       <div className="h-56 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={series} margin={{ top: 8, right: 12, left: -16, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.2} />
-            <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#64748b' }} />
-            <YAxis tick={{ fontSize: 11, fill: '#64748b' }} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.14} />
+            <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94a3b8' }} />
+            <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
             <Tooltip
               contentStyle={{
-                borderRadius: '8px',
-                border: '1px solid #cbd5e1',
+                backgroundColor: 'rgba(8, 12, 26, 0.94)',
+                borderRadius: '10px',
+                border: '1px solid rgba(148, 163, 184, 0.25)',
+                color: '#f8fafc',
                 fontSize: '12px',
               }}
             />
@@ -95,7 +95,7 @@ export const ProgressChartModule: React.FC<ProgressChartModuleProps> = ({
               type="monotone"
               dataKey="ideal"
               name={`Ideal Pace (${workspace.unit})`}
-              stroke="#94a3b8"
+              stroke="#64748b"
               strokeDasharray="5 5"
               strokeWidth={2}
               dot={false}
@@ -106,7 +106,7 @@ export const ProgressChartModule: React.FC<ProgressChartModuleProps> = ({
               name={`Actual (${workspace.unit})`}
               stroke={theme.chartHex}
               fill={theme.chartHex}
-              fillOpacity={0.14}
+              fillOpacity={0.2}
               strokeWidth={2.5}
               connectNulls={false}
             />

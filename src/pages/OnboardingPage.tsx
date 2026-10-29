@@ -121,11 +121,10 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
 
   return (
     <div className="max-w-6xl mx-auto space-y-10">
-      {/* Hero Focal Anchor */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 sm:p-8">
+      <div className="astra-card-priority rounded-xl p-6 sm:p-8">
         <div className="max-w-3xl">
-          <p className="text-xs font-medium text-blue-600 dark:text-blue-400">
-            Adaptive Multi-Model Problem Console
+          <p className="text-xs font-medium text-sky-600 dark:text-sky-300">
+            Astra Adaptive Multi-Model Console
           </p>
           <h1 className="mt-2 text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white [text-wrap:balance]">
             What problem do you want to solve?
@@ -140,10 +139,10 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
             <button
               type="button"
               onClick={() => setCustomMode(false)}
-              className={`px-4 py-2 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 !customMode
-                  ? 'bg-blue-600 text-white'
-                  : 'border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  ? 'bg-sky-500 text-slate-950 shadow-[0_0_20px_-4px_rgba(56,189,248,0.55)]'
+                  : 'border border-slate-200 dark:border-white/[0.14] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.06]'
               }`}
             >
               Browse 6 Problem Templates
@@ -151,10 +150,10 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
             <button
               type="button"
               onClick={() => setCustomMode(true)}
-              className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 customMode
-                  ? 'bg-blue-600 text-white'
-                  : 'border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  ? 'bg-sky-500 text-slate-950 shadow-[0_0_20px_-4px_rgba(56,189,248,0.55)]'
+                  : 'border border-slate-200 dark:border-white/[0.14] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.06]'
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
@@ -179,7 +178,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
             {WORKSPACE_TEMPLATES.map((tpl) => (
               <div
                 key={tpl.category}
-                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col justify-between hover:border-blue-400 dark:hover:border-blue-600 transition-colors"
+                className="astra-card rounded-xl p-5 flex flex-col justify-between hover:border-sky-400/50 transition-colors"
               >
                 <div>
                   <h3 className="text-base font-semibold text-slate-900 dark:text-white">
@@ -189,8 +188,8 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                     {tpl.tagline}
                   </p>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 space-y-1 tabular-nums">
-                    <p className="text-slate-700 dark:text-slate-300 font-medium">
+                  <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/[0.08] text-xs text-slate-500 dark:text-slate-400 space-y-1 tabular-nums">
+                    <p className="text-slate-700 dark:text-sky-200 font-medium">
                       Goal: {tpl.goalTitle}
                     </p>
                     <p>
@@ -203,7 +202,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                 <button
                   type="button"
                   onClick={() => handleQuickTemplate(tpl)}
-                  className="mt-5 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap cursor-pointer"
+                  className="mt-5 w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-slate-950 rounded-lg transition-colors whitespace-nowrap cursor-pointer"
                 >
                   <span>Create {tpl.category}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -215,7 +214,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
       ) : (
         <form
           onSubmit={handleCreateCustom}
-          className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 space-y-6"
+          className="astra-card rounded-xl p-6 space-y-6"
         >
           <div>
             <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -238,7 +237,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                 placeholder="e.g., Thesis Literature Review"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
               />
             </div>
 
@@ -251,7 +250,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                 placeholder="e.g., Read and synthesize 30 peer-reviewed papers"
                 value={goalTitle}
                 onChange={(e) => setGoalTitle(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
               />
             </div>
 
@@ -264,7 +263,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                 placeholder="e.g., Balancing lab shifts with writing deadlines without losing energy."
                 value={problemStatement}
                 onChange={(e) => setProblemStatement(e.target.value)}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
               />
             </div>
 
@@ -279,7 +278,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                   step="any"
                   value={targetValue}
                   onChange={(e) => setTargetValue(e.target.value)}
-                  className="w-full px-3 py-2 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
                 />
               </div>
               <div>
@@ -291,7 +290,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                   placeholder="papers / hrs / USD / km"
                   value={unit}
                   onChange={(e) => setUnit(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
                 />
               </div>
             </div>
@@ -305,7 +304,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                   type="date"
                   value={deadline}
                   onChange={(e) => setDeadline(e.target.value)}
-                  className="w-full px-3 py-2 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
                 />
               </div>
               <div>
@@ -316,13 +315,13 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                   type="text"
                   value={loggerLabel}
                   onChange={(e) => setLoggerLabel(e.target.value)}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+                  className="w-full px-3 py-2 text-sm rounded-lg astra-input text-slate-900 dark:text-white"
                 />
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div className="pt-4 border-t border-slate-200/60 dark:border-white/[0.08]">
             <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-3">
               Select Modules to Mount ({selectedModules.length} selected)
             </p>
@@ -336,8 +335,8 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                     onClick={() => toggleModule(mod.type)}
                     className={`text-left p-3.5 rounded-lg border transition-colors cursor-pointer ${
                       active
-                        ? 'border-blue-600 bg-blue-50/60 dark:bg-blue-950/30 dark:border-blue-500'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                        ? 'border-sky-500 bg-sky-50/70 dark:bg-sky-500/15 dark:border-sky-400/50'
+                        : 'border-slate-200 dark:border-white/[0.10] hover:border-slate-300 dark:hover:border-white/[0.22]'
                     }`}
                   >
                     <div className="flex items-center justify-between gap-2">
@@ -347,8 +346,8 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                       <span
                         className={`w-4 h-4 rounded-xs border flex items-center justify-center shrink-0 ${
                           active
-                            ? 'bg-blue-600 border-blue-600 text-white'
-                            : 'border-slate-300 dark:border-slate-600'
+                            ? 'bg-sky-500 border-sky-500 text-slate-950'
+                            : 'border-slate-300 dark:border-white/[0.22]'
                         }`}
                       >
                         {active && <Check className="w-3 h-3" />}
@@ -374,7 +373,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
             <button
               type="submit"
               disabled={!name.trim() || selectedModules.length === 0}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-semibold bg-sky-500 hover:bg-sky-400 disabled:opacity-40 text-slate-950 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               <span>Launch Custom Workspace</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -394,7 +393,7 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({
                 key={ws.id}
                 type="button"
                 onClick={() => onSelectExisting(ws.id)}
-                className="text-left p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-blue-500 transition-colors cursor-pointer"
+                className="text-left p-4 astra-card rounded-xl hover:border-sky-400/50 transition-colors cursor-pointer"
               >
                 <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">
                   {ws.name}

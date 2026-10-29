@@ -73,6 +73,14 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
     setNote('');
   };
 
+  const tooltipStyles = {
+    backgroundColor: 'rgba(8, 12, 26, 0.94)',
+    borderRadius: '10px',
+    border: '1px solid rgba(148, 163, 184, 0.25)',
+    color: '#f8fafc',
+    fontSize: '12px',
+  };
+
   return (
     <ModuleShell
       title={title}
@@ -83,7 +91,7 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
       onExplain={onExplain}
       minimizedSummary={`${logs.length} entries logged · Sum: ${+totalLogged.toFixed(1)}`}
       headerRight={
-        <div className="flex items-center gap-1 p-0.5 bg-slate-100 dark:bg-slate-800 rounded-lg">
+        <div className="flex items-center gap-1 p-0.5 bg-slate-200/70 dark:bg-white/[0.06] rounded-lg border border-transparent dark:border-white/[0.08]">
           {(['bar', 'line'] as const).map((t) => (
             <button
               key={t}
@@ -91,7 +99,7 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
               onClick={() => onToggleChartType(t)}
               className={`px-2.5 py-1 text-xs font-medium rounded-md capitalize transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 chartType === t
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+                  ? 'bg-white dark:bg-sky-500/20 text-slate-900 dark:text-sky-200 shadow-xs'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -110,30 +118,18 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
           <ResponsiveContainer width="100%" height="100%">
             {chartType === 'bar' ? (
               <BarChart data={chartData} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.2} />
-                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#64748b' }} />
-                <YAxis tick={{ fontSize: 11, fill: '#64748b' }} />
-                <Tooltip
-                  contentStyle={{
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '12px',
-                  }}
-                />
+                <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.14} />
+                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                <Tooltip contentStyle={tooltipStyles} />
                 <Bar dataKey="value" fill={theme.chartHex} radius={[4, 4, 0, 0]} />
               </BarChart>
             ) : (
               <LineChart data={chartData} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.2} />
-                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#64748b' }} />
-                <YAxis tick={{ fontSize: 11, fill: '#64748b' }} />
-                <Tooltip
-                  contentStyle={{
-                    borderRadius: '8px',
-                    border: '1px solid #cbd5e1',
-                    fontSize: '12px',
-                  }}
-                />
+                <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" strokeOpacity={0.14} />
+                <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} />
+                <Tooltip contentStyle={tooltipStyles} />
                 <Line
                   type="monotone"
                   dataKey="value"
@@ -147,28 +143,28 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap sm:flex-nowrap items-center gap-2">
+      <form onSubmit={handleSubmit} className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/[0.08] flex flex-wrap sm:flex-nowrap items-center gap-2">
         <input
           type="number"
           step="any"
           placeholder="Value"
           value={val}
           onChange={(e) => setVal(e.target.value)}
-          className="w-24 px-2.5 py-1.5 text-sm font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white"
+          className="w-24 px-2.5 py-1.5 text-sm font-mono-num rounded-lg astra-input text-slate-900 dark:text-white"
         />
         <input
           type="date"
           aria-label="Log date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="px-2.5 py-1.5 text-xs font-mono-num rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200"
+          className="px-2.5 py-1.5 text-xs font-mono-num rounded-lg astra-input text-slate-700 dark:text-slate-200"
         />
         <input
           type="text"
           placeholder="Short note (optional)"
           value={note}
           onChange={(e) => setNote(e.target.value)}
-          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white placeholder:text-slate-400"
+          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-lg astra-input text-slate-900 dark:text-white placeholder:text-slate-400"
         />
         <button
           type="submit"
@@ -180,7 +176,7 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
       </form>
 
       {logs.length > 0 && (
-        <ul className="mt-3 divide-y divide-slate-100 dark:divide-slate-800/80 max-h-36 overflow-y-auto">
+        <ul className="mt-3 divide-y divide-slate-200/60 dark:divide-white/[0.06] max-h-36 overflow-y-auto">
           {[...sorted]
             .reverse()
             .slice(0, 4)
@@ -192,14 +188,14 @@ export const NumberLoggerModule: React.FC<NumberLoggerModuleProps> = ({
                   <span>{entry.note}</span>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="font-mono-num font-semibold text-slate-900 dark:text-white">
+                  <span className="font-mono-num font-semibold text-slate-900 dark:text-sky-200">
                     {entry.value}
                   </span>
                   <button
                     type="button"
                     aria-label="Delete log entry"
                     onClick={() => onDeleteLog(entry.id)}
-                    className="text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 cursor-pointer"
+                    className="text-slate-400 hover:text-rose-500 dark:hover:text-rose-400 cursor-pointer"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>

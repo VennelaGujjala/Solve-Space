@@ -59,8 +59,8 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       {/* Problem Statement Section */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 sm:p-8 space-y-4">
-        <div className="flex items-center gap-2 text-xs font-medium text-blue-600 dark:text-blue-400">
+      <div className="astra-card-priority rounded-xl p-6 sm:p-8 space-y-4">
+        <div className="flex items-center gap-2 text-xs font-medium text-sky-600 dark:text-sky-300">
           <Layers className="w-4 h-4" />
           <span>Project Overview & Problem Statement</span>
         </div>
@@ -85,34 +85,34 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* Adaptive Engine Rule Matrix */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 space-y-4">
+      <div className="astra-card rounded-xl p-6 space-y-4">
         <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
           Explainable Adaptive Modes
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs sm:text-sm border-collapse">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
+              <tr className="border-b border-slate-200/70 dark:border-white/[0.10] text-slate-500 dark:text-slate-400">
                 <th className="py-2.5 pr-4 font-medium">Mode</th>
                 <th className="py-2.5 px-4 font-medium">Trigger Condition</th>
                 <th className="py-2.5 pl-4 font-medium">Automatic Console Adaptation</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tbody className="divide-y divide-slate-200/60 dark:divide-white/[0.07] text-slate-700 dark:text-slate-300">
               <tr>
-                <td className="py-3 pr-4 font-semibold text-teal-700 dark:text-teal-400 whitespace-nowrap">
+                <td className="py-3 pr-4 font-semibold text-teal-700 dark:text-teal-300 whitespace-nowrap">
                   Recovery Mode
                 </td>
                 <td className="py-3 px-4 tabular-nums">
                   Mood or Energy ≤ 2/5 across 3 consecutive check-ins
                 </td>
                 <td className="py-3 pl-4">
-                  Calm sage-teal palette, surfaces light-effort tasks & restorative break guidance,
-                  compacts dense charts.
+                  Calm aurora-teal nebula aura, surfaces light-effort tasks & restorative break
+                  guidance, compacts dense charts.
                 </td>
               </tr>
               <tr>
-                <td className="py-3 pr-4 font-semibold text-rose-600 dark:text-rose-400 whitespace-nowrap">
+                <td className="py-3 pr-4 font-semibold text-rose-600 dark:text-rose-300 whitespace-nowrap">
                   Crunch Mode
                 </td>
                 <td className="py-3 px-4 tabular-nums">
@@ -124,7 +124,7 @@ export const AboutPage: React.FC = () => {
                 </td>
               </tr>
               <tr>
-                <td className="py-3 pr-4 font-semibold text-amber-700 dark:text-amber-400 whitespace-nowrap">
+                <td className="py-3 pr-4 font-semibold text-amber-700 dark:text-amber-300 whitespace-nowrap">
                   Behind Schedule
                 </td>
                 <td className="py-3 px-4 tabular-nums">
@@ -136,18 +136,18 @@ export const AboutPage: React.FC = () => {
                 </td>
               </tr>
               <tr>
-                <td className="py-3 pr-4 font-semibold text-emerald-700 dark:text-emerald-400 whitespace-nowrap">
+                <td className="py-3 pr-4 font-semibold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">
                   Ahead of Plan
                 </td>
                 <td className="py-3 px-4 tabular-nums">
                   Outpaces timeline by ≥ 15% (or ≥ 85% complete with &gt; 7d left) & 0 overdue
                 </td>
                 <td className="py-3 pl-4">
-                  Emerald growth banner and 1-click +15% stretch target calibration.
+                  Emerald pulsar banner and 1-click +15% stretch target calibration.
                 </td>
               </tr>
               <tr>
-                <td className="py-3 pr-4 font-semibold text-blue-600 dark:text-blue-400 whitespace-nowrap">
+                <td className="py-3 pr-4 font-semibold text-sky-600 dark:text-sky-300 whitespace-nowrap">
                   On Track
                 </td>
                 <td className="py-3 px-4">Balanced velocity and healthy check-in bandwidth</td>
@@ -161,7 +161,7 @@ export const AboutPage: React.FC = () => {
       </div>
 
       {/* Future Scope Section */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 sm:p-8 space-y-5">
+      <div className="astra-card rounded-xl p-6 sm:p-8 space-y-5">
         <div>
           <h2 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white">
             Future Scope & Research Roadmap
@@ -178,9 +178,9 @@ export const AboutPage: React.FC = () => {
             return (
               <div
                 key={item.title}
-                className="p-4 rounded-xl border border-slate-100 dark:border-slate-800 flex items-start gap-3.5"
+                className="p-4 rounded-xl border border-slate-200/70 dark:border-white/[0.08] bg-white/40 dark:bg-white/[0.02] flex items-start gap-3.5"
               >
-                <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shrink-0">
+                <div className="p-2 rounded-lg bg-sky-500/15 text-sky-600 dark:text-sky-300 shrink-0">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>

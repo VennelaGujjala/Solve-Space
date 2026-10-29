@@ -94,7 +94,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       ? Zap
       : Compass;
 
-  // Radial SVG Gauge math for 0-100 Progress Score
   const radius = 38;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset =
@@ -105,7 +104,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       {/* Workspace Header Row */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-sky-300/80 tabular-nums">
             <span>{workspace.category}</span>
             <span aria-hidden="true">·</span>
             <span>Deadline {workspace.deadline}</span>
@@ -115,7 +114,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white truncate">
             {workspace.name}
           </h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
             {workspace.problemStatement}
           </p>
         </div>
@@ -124,7 +123,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             type="button"
             onClick={() => onNavigate(PageId.Builder)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 astra-card rounded-lg hover:border-sky-400/50 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
             <span>Customize Modules</span>
@@ -132,7 +131,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             type="button"
             onClick={() => onNavigate(PageId.Simulator)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 astra-card rounded-lg hover:border-sky-400/50 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <span>What-If Simulator</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -140,7 +139,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 astra-card rounded-lg hover:border-sky-400/50 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
             <span>Weekly Report</span>
@@ -154,11 +153,11 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
-        className={`rounded-xl border p-5 ${theme.bannerBg} ${theme.bannerBorder}`}
+        className={`rounded-xl border p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] ${theme.bannerBg} ${theme.bannerBorder}`}
       >
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className={`p-2 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-slate-200/70 dark:border-slate-700/70 shrink-0 ${theme.accentText}`}>
+            <div className={`p-2 rounded-lg bg-white/80 dark:bg-white/[0.06] border border-slate-200/70 dark:border-white/[0.12] shrink-0 ${theme.accentText}`}>
               <ModeIcon className="w-5 h-5" />
             </div>
             <div>
@@ -168,7 +167,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                 <button
                   type="button"
                   onClick={() => onExplain(evaluation.modeReason)}
-                  className="inline-flex items-center gap-1 text-slate-700 dark:text-slate-200 hover:underline font-medium whitespace-nowrap shrink-0 cursor-pointer"
+                  className="inline-flex items-center gap-1 text-slate-700 dark:text-sky-200 hover:underline font-medium whitespace-nowrap shrink-0 cursor-pointer"
                 >
                   <HelpCircle className="w-3.5 h-3.5" />
                   <span>Why am I seeing this?</span>
@@ -221,7 +220,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
       {/* TOP INTELLIGENCE ROW: PROGRESS SCORE GAUGE + NEXT BEST ACTIONS */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 no-print">
         {/* Progress Score Radial Gauge (4 cols) */}
-        <div className="lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+        <div className="lg:col-span-4 astra-card rounded-xl p-5 flex flex-col justify-between">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
@@ -234,7 +233,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             <button
               type="button"
               onClick={() => setShowScoreBreakdown((v) => !v)}
-              className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1 text-xs font-medium text-sky-600 dark:text-sky-400 hover:underline whitespace-nowrap shrink-0 cursor-pointer"
             >
               <HelpCircle className="w-3.5 h-3.5" />
               <span>Why this score?</span>
@@ -251,7 +250,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="8"
-                  className="text-slate-100 dark:text-slate-800"
+                  className="text-slate-200 dark:text-white/[0.08]"
                 />
                 <circle
                   cx="48"
@@ -278,7 +277,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               {evaluation.scorePillars.map((p) => (
                 <div key={p.label} className="flex items-center justify-between gap-2">
                   <span className="text-slate-600 dark:text-slate-400 truncate">{p.label}</span>
-                  <span className="font-mono-num font-semibold text-slate-900 dark:text-slate-100 shrink-0">
+                  <span className="font-mono-num font-semibold text-slate-900 dark:text-sky-200 shrink-0">
                     {p.score}/{p.maxScore}
                   </span>
                 </div>
@@ -287,7 +286,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           </div>
 
           {showScoreBreakdown ? (
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2 text-xs">
+            <div className="pt-3 border-t border-slate-200/60 dark:border-white/[0.08] space-y-2 text-xs">
               {evaluation.scorePillars.map((p) => (
                 <div key={p.label}>
                   <p className="font-medium text-slate-800 dark:text-slate-200">
@@ -299,13 +298,13 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               <button
                 type="button"
                 onClick={() => onExplain(evaluation.scoreExplanation)}
-                className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
+                className="text-sky-600 dark:text-sky-400 hover:underline font-medium cursor-pointer"
               >
                 Open full formula in Rule Inspector →
               </button>
             </div>
           ) : (
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+            <div className="pt-3 border-t border-slate-200/60 dark:border-white/[0.08] flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 tabular-nums">
               <span>Actual: {Math.round(evaluation.actualProgressRatio * 100)}%</span>
               <span>Expected: {Math.round(evaluation.expectedProgressRatio * 100)}%</span>
             </div>
@@ -313,11 +312,11 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         </div>
 
         {/* Smart Suggestions: Next Best Actions (8 cols) */}
-        <div className="lg:col-span-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col justify-between">
+        <div className="lg:col-span-8 astra-card rounded-xl p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between gap-2 mb-3">
             <div>
               <h3 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <Sparkles className="w-4 h-4 text-sky-500 dark:text-sky-400" />
                 <span>Next Best Actions (Rule-Based)</span>
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -326,7 +325,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             </div>
           </div>
 
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800/80 flex-1">
+          <ul className="divide-y divide-slate-200/60 dark:divide-white/[0.07] flex-1">
             {evaluation.suggestions.map((sug, idx) => (
               <li
                 key={sug.id}
@@ -334,7 +333,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
               >
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-slate-900 dark:text-slate-100">
-                    <span className="font-mono-num text-slate-400 mr-1.5">0{idx + 1}.</span>
+                    <span className="font-mono-num text-sky-500/80 mr-1.5">0{idx + 1}.</span>
                     {sug.title}
                   </p>
                   <div className="mt-0.5 flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
@@ -343,7 +342,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                     <button
                       type="button"
                       onClick={() => onExplain(sug.whyExplanation)}
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-medium whitespace-nowrap shrink-0 cursor-pointer"
+                      className="text-sky-600 dark:text-sky-400 hover:underline font-medium whitespace-nowrap shrink-0 cursor-pointer"
                     >
                       Why am I seeing this?
                     </button>
@@ -354,7 +353,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                   <button
                     type="button"
                     onClick={() => onExecuteSuggestion(sug)}
-                    className="px-3 py-1.5 text-xs font-medium text-slate-800 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors whitespace-nowrap shrink-0 self-start sm:self-center cursor-pointer"
+                    className="px-3 py-1.5 text-xs font-medium text-slate-800 dark:text-sky-200 bg-slate-200/70 dark:bg-sky-500/15 border border-transparent dark:border-sky-400/25 hover:bg-slate-300/70 dark:hover:bg-sky-500/25 rounded-lg transition-colors whitespace-nowrap shrink-0 self-start sm:self-center cursor-pointer"
                   >
                     {sug.actionLabel}
                   </button>
@@ -367,7 +366,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
       {/* ADAPTIVE REUSABLE MODULE GRID */}
       {evaluation.orderedModules.length === 0 ? (
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-10 text-center space-y-3">
+        <div className="astra-card rounded-xl p-10 text-center space-y-3">
           <p className="text-base font-semibold text-slate-900 dark:text-white">
             No modules mounted in this workspace yet
           </p>
@@ -377,7 +376,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
           <button
             type="button"
             onClick={() => onNavigate(PageId.Builder)}
-            className="px-4 py-2 text-xs font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+            className="px-4 py-2 text-xs font-semibold bg-sky-500 text-slate-950 rounded-lg hover:bg-sky-400 transition-colors cursor-pointer"
           >
             Open Workspace Builder
           </button>
@@ -506,7 +505,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         </div>
       )}
 
-      {/* PRINTABLE WEEKLY PROGRESS REPORT (Visible when printing via window.print()) */}
+      {/* PRINTABLE WEEKLY PROGRESS REPORT */}
       <div className="hidden print-only space-y-6 pt-4 border-t border-slate-300">
         <div>
           <h2 className="text-xl font-bold">SolveSpace — Weekly Workspace Progress Report</h2>

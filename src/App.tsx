@@ -33,13 +33,14 @@ import { AboutPage } from './pages/AboutPage';
 
 const LS_WORKSPACES_KEY = 'solvespace_workspaces_v1';
 const LS_ACTIVE_WS_KEY = 'solvespace_active_ws_v1';
-const LS_SETTINGS_KEY = 'solvespace_settings_v1';
+const LS_SETTINGS_KEY = 'solvespace_settings_astra_v2';
 const LS_BONUS_XP_KEY = 'solvespace_bonus_xp_v1';
 
 const DEFAULT_SETTINGS: AppSettings = {
-  darkMode: false,
+  darkMode: true,
   largeText: false,
   keyboardShortcuts: true,
+  starfieldMotion: true,
 };
 
 export default function App() {
@@ -103,7 +104,6 @@ export default function App() {
     return () => window.clearTimeout(t);
   }, [toastMessage]);
 
-  // Persist to localStorage
   useEffect(() => {
     try {
       localStorage.setItem(LS_WORKSPACES_KEY, JSON.stringify(workspaces));
@@ -142,7 +142,6 @@ export default function App() {
     }
   }, [bonusXp]);
 
-  // Global Keyboard Shortcuts: N = New Task, / = Search, D = Demo Mode
   useEffect(() => {
     if (!settings.keyboardShortcuts) return;
 
@@ -198,7 +197,6 @@ export default function App() {
     [activeWorkspace.id]
   );
 
-  // Module & Workspace Mutations
   const handleCreateWorkspace = (ws: Workspace) => {
     setWorkspaces((prev) => [ws, ...prev]);
     setActiveWorkspaceId(ws.id);
@@ -404,7 +402,6 @@ export default function App() {
     }
   };
 
-  // Builder Mutations
   const handleUpdateWorkspaceMeta = (patch: Partial<Workspace>) => {
     mutateActiveWorkspace((ws) => ({ ...ws, ...patch }));
   };
@@ -422,7 +419,6 @@ export default function App() {
     showToast('Deleted workspace');
   };
 
-  // Demo Scenario Switcher Handlers
   const handleSelectDemoScenario = (scenarioId: DemoScenarioId) => {
     const { workspaces: nextList, activeWorkspaceId: nextActive } = applyDemoScenarioData(
       scenarioId,
@@ -452,6 +448,7 @@ export default function App() {
         activeMode={activeEvaluation.mode}
         activePage={activePage}
         darkMode={settings.darkMode}
+        starfieldMotion={settings.starfieldMotion}
         bonusXp={bonusXp}
         onSelectWorkspace={(id) => {
           setActiveWorkspaceId(id);
@@ -539,7 +536,6 @@ export default function App() {
         {activePage === PageId.About && <AboutPage />}
       </ConsoleShell>
 
-      {/* Floating Presentation Demo Mode Switcher */}
       <DemoSwitcher
         isOpen={demoOpen}
         activeScenario={activeDemoScenario}
@@ -548,13 +544,11 @@ export default function App() {
         onResetDemo={handleResetDemo}
       />
 
-      {/* Explainable Adaptive Rule Inspector ("Why am I seeing this?") */}
       <RuleInspectorModal
         rule={inspectedRule}
         onClose={() => setInspectedRule(null)}
       />
 
-      {/* Global Search (/) & Quick Add Task (N) Modals */}
       <SearchModal
         isOpen={searchOpen}
         workspaces={workspaces}
@@ -572,11 +566,10 @@ export default function App() {
         onAddTask={handleAddTask}
       />
 
-      {/* Subtle Feedback Toast */}
       {toastMessage && (
         <div
           role="status"
-          className="fixed bottom-5 left-5 z-40 px-4 py-2.5 text-xs font-medium bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg shadow-lg no-print"
+          className="fixed bottom-5 left-5 z-40 px-4 py-2.5 text-xs font-medium bg-[#080C1C]/95 backdrop-blur-xl border border-sky-400/35 text-sky-100 rounded-lg shadow-xl no-print"
         >
           {toastMessage}
         </div>

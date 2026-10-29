@@ -14,54 +14,59 @@ export function getModeTheme(mode: AdaptiveMode): ModeThemeTokens {
   switch (mode) {
     case AdaptiveMode.CrunchMode:
       return {
-        bannerBg: 'bg-rose-50/90 dark:bg-rose-950/35',
-        bannerBorder: 'border-rose-200 dark:border-rose-800/70',
+        bannerBg: 'bg-rose-50/85 dark:bg-rose-950/35 backdrop-blur-xl',
+        bannerBorder: 'border-rose-300/70 dark:border-rose-500/35',
         accentText: 'text-rose-700 dark:text-rose-300',
-        buttonPrimary: 'bg-rose-600 hover:bg-rose-700 text-white',
-        barFill: 'bg-rose-600 dark:bg-rose-500',
-        chartHex: '#e11d48',
-        canvasTint: 'bg-slate-50 dark:bg-slate-950',
+        buttonPrimary:
+          'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_0_20px_-4px_rgba(244,63,94,0.55)]',
+        barFill: 'bg-gradient-to-r from-rose-500 to-orange-400',
+        chartHex: '#fb7185',
+        canvasTint: 'bg-transparent',
       };
     case AdaptiveMode.BehindSchedule:
       return {
-        bannerBg: 'bg-amber-50/90 dark:bg-amber-950/35',
-        bannerBorder: 'border-amber-200 dark:border-amber-800/70',
+        bannerBg: 'bg-amber-50/85 dark:bg-amber-950/35 backdrop-blur-xl',
+        bannerBorder: 'border-amber-300/70 dark:border-amber-500/35',
         accentText: 'text-amber-800 dark:text-amber-300',
-        buttonPrimary: 'bg-amber-600 hover:bg-amber-700 text-white',
-        barFill: 'bg-amber-600 dark:bg-amber-500',
-        chartHex: '#d97706',
-        canvasTint: 'bg-slate-50 dark:bg-slate-950',
+        buttonPrimary:
+          'bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold shadow-[0_0_20px_-4px_rgba(245,158,11,0.5)]',
+        barFill: 'bg-gradient-to-r from-amber-500 to-yellow-400',
+        chartHex: '#fbbf24',
+        canvasTint: 'bg-transparent',
       };
     case AdaptiveMode.RecoveryMode:
       return {
-        bannerBg: 'bg-teal-50/90 dark:bg-teal-950/35',
-        bannerBorder: 'border-teal-200 dark:border-teal-800/70',
+        bannerBg: 'bg-teal-50/85 dark:bg-teal-950/35 backdrop-blur-xl',
+        bannerBorder: 'border-teal-300/70 dark:border-teal-400/35',
         accentText: 'text-teal-800 dark:text-teal-300',
-        buttonPrimary: 'bg-teal-600 hover:bg-teal-700 text-white',
-        barFill: 'bg-teal-600 dark:bg-teal-500',
-        chartHex: '#0d9488',
-        canvasTint: 'bg-teal-50/35 dark:bg-slate-950',
+        buttonPrimary:
+          'bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold shadow-[0_0_20px_-4px_rgba(45,212,191,0.5)]',
+        barFill: 'bg-gradient-to-r from-teal-400 to-cyan-400',
+        chartHex: '#2dd4bf',
+        canvasTint: 'bg-transparent',
       };
     case AdaptiveMode.AheadOfPlan:
       return {
-        bannerBg: 'bg-emerald-50/90 dark:bg-emerald-950/35',
-        bannerBorder: 'border-emerald-200 dark:border-emerald-800/70',
+        bannerBg: 'bg-emerald-50/85 dark:bg-emerald-950/35 backdrop-blur-xl',
+        bannerBorder: 'border-emerald-300/70 dark:border-emerald-400/35',
         accentText: 'text-emerald-800 dark:text-emerald-300',
-        buttonPrimary: 'bg-emerald-600 hover:bg-emerald-700 text-white',
-        barFill: 'bg-emerald-600 dark:bg-emerald-500',
-        chartHex: '#16a34a',
-        canvasTint: 'bg-slate-50 dark:bg-slate-950',
+        buttonPrimary:
+          'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold shadow-[0_0_20px_-4px_rgba(52,211,153,0.5)]',
+        barFill: 'bg-gradient-to-r from-emerald-400 to-teal-300',
+        chartHex: '#34d399',
+        canvasTint: 'bg-transparent',
       };
     case AdaptiveMode.OnTrack:
     default:
       return {
-        bannerBg: 'bg-blue-50/80 dark:bg-blue-950/30',
-        bannerBorder: 'border-blue-200 dark:border-blue-800/60',
-        accentText: 'text-blue-700 dark:text-blue-300',
-        buttonPrimary: 'bg-blue-600 hover:bg-blue-700 text-white',
-        barFill: 'bg-blue-600 dark:bg-blue-500',
-        chartHex: '#2563eb',
-        canvasTint: 'bg-slate-50 dark:bg-slate-950',
+        bannerBg: 'bg-sky-50/85 dark:bg-[#0D152B]/75 backdrop-blur-xl',
+        bannerBorder: 'border-sky-300/70 dark:border-sky-400/30',
+        accentText: 'text-sky-700 dark:text-sky-300',
+        buttonPrimary:
+          'bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold shadow-[0_0_22px_-4px_rgba(56,189,248,0.55)]',
+        barFill: 'bg-gradient-to-r from-sky-400 to-indigo-400',
+        chartHex: '#38bdf8',
+        canvasTint: 'bg-transparent',
       };
   }
 }
